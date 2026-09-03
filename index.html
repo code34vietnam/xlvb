@@ -1,0 +1,2159 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123955">
+  <meta name="description" content="CODE34 Office Assistant – Trợ lý hành chính v10.8 xử lý PDF, Word, Excel, tìm kiếm tài liệu, nén bảo mật, đổi tên tệp và tạo mã QR ngoại tuyến trên Windows.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:site_name" content="CODE34 Office Assistant">
+  <meta property="og:title" content="CODE34 Office Assistant – Trợ lý hành chính">
+  <meta property="og:description" content="Một bộ công cụ gọn gàng cho PDF, Word, Excel, tìm kiếm tài liệu, nén bảo mật, đổi tên tệp và tạo mã QR.">
+  <meta property="og:image" content="https://storage.googleapis.com/menu-tamvy/CONG_CU_XLVB/thumnail_XLVB.png">
+  <meta property="og:image:secure_url" content="https://storage.googleapis.com/menu-tamvy/CONG_CU_XLVB/thumnail_XLVB.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1672">
+  <meta property="og:image:height" content="941">
+  <meta property="og:image:alt" content="CODE34 Office Assistant – Công cụ xử lý văn bản và dữ liệu">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CODE34 Office Assistant – Trợ lý hành chính">
+  <meta name="twitter:description" content="Xử lý PDF, Word, Excel, tìm kiếm tài liệu, nén bảo mật, đổi tên tệp và tạo mã QR.">
+  <meta name="twitter:image" content="https://storage.googleapis.com/menu-tamvy/CONG_CU_XLVB/thumnail_XLVB.png">
+  <link rel="image_src" href="https://storage.googleapis.com/menu-tamvy/CONG_CU_XLVB/thumnail_XLVB.png">
+  <title>CODE34 Office Assistant – Trợ lý hành chính</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy-950: #071c2b;
+      --navy-900: #0c2a40;
+      --navy-800: #123955;
+      --navy-700: #1c4b69;
+      --cyan-700: #007cae;
+      --cyan-600: #008fca;
+      --cyan-500: #12a8df;
+      --cyan-100: #dff5fc;
+      --pink-600: #d92775;
+      --pink-500: #ea3f88;
+      --pink-100: #ffe5f0;
+      --slate-700: #455f73;
+      --slate-600: #5f7485;
+      --slate-300: #b9c8d2;
+      --slate-200: #d8e2e9;
+      --slate-100: #eaf0f4;
+      --ink: #172c3c;
+      --muted: #5f7180;
+      --surface: #ffffff;
+      --background: #f4f8fb;
+      --line: #d8e2e9;
+      --success: #16825d;
+      --warning: #a86608;
+      --shadow-sm: 0 8px 24px rgba(21, 53, 76, .08);
+      --shadow-md: 0 18px 50px rgba(15, 48, 70, .13);
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --container: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--background);
+      font-family: "Be Vietnam Pro", "Segoe UI Variable Text", "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+    }
+
+    body.menu-open { overflow: hidden; }
+
+    img, video { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button, input { font: inherit; }
+
+    .skip-link {
+      position: fixed;
+      left: 16px;
+      top: -80px;
+      z-index: 999;
+      padding: 10px 14px;
+      color: #fff;
+      background: var(--pink-600);
+      border-radius: 8px;
+      transition: top .2s ease;
+    }
+
+    .skip-link:focus { top: 12px; }
+
+    .container {
+      width: min(calc(100% - 40px), var(--container));
+      margin-inline: auto;
+    }
+
+    .section { padding: 88px 0; }
+    .section-compact { padding: 54px 0; }
+    .section-white { background: var(--surface); }
+    .section-soft { background: #eef5f8; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 14px;
+      color: var(--cyan-700);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 24px;
+      height: 3px;
+      content: "";
+      background: var(--pink-500);
+      border-radius: 99px;
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    .section-heading.center {
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1, h2, h3 {
+      font-family: "Be Vietnam Pro", "Segoe UI Variable Display", "Segoe UI", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1.18;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: clamp(2.45rem, 5vw, 4.7rem);
+      letter-spacing: -.045em;
+    }
+
+    h2 {
+      margin-bottom: 16px;
+      color: var(--navy-900);
+      font-size: clamp(2rem, 3.5vw, 3.1rem);
+      letter-spacing: -.035em;
+    }
+
+    h3 {
+      margin-bottom: 12px;
+      color: var(--navy-900);
+      font-size: 1.35rem;
+      letter-spacing: -.018em;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: clamp(1.03rem, 1.8vw, 1.2rem);
+    }
+
+    .muted { color: var(--muted); }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+      background: rgba(7, 28, 43, .95);
+      box-shadow: 0 8px 24px rgba(2, 17, 27, .16);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-wrap {
+      display: flex;
+      min-height: 72px;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .brand {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 118px;
+      height: 46px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .brand-copy {
+      padding-left: 12px;
+      border-left: 1px solid rgba(255, 255, 255, .2);
+      line-height: 1.12;
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: .92rem;
+      letter-spacing: .015em;
+    }
+
+    .brand-copy small {
+      display: block;
+      margin-top: 4px;
+      color: #bcd1df;
+      font-size: .72rem;
+    }
+
+    .nav-links {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-links a {
+      padding: 9px 11px;
+      color: #d9e7ef;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+      background: rgba(255, 255, 255, .1);
+    }
+
+    .nav-download {
+      display: inline-flex;
+      min-height: 42px;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      color: #fff;
+      background: var(--pink-600);
+      border-radius: 9px;
+      font-size: .9rem;
+      font-weight: 750;
+      text-decoration: none;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .nav-download:hover {
+      background: var(--pink-500);
+      transform: translateY(-1px);
+    }
+
+    .menu-button {
+      display: none;
+      width: 42px;
+      height: 42px;
+      margin-left: auto;
+      color: #fff;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, .25);
+      border-radius: 9px;
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 84px 0 70px;
+      color: #fff;
+      background: var(--navy-950);
+    }
+
+    .hero::before,
+    .hero::after {
+      position: absolute;
+      content: "";
+      pointer-events: none;
+      border-radius: 50%;
+      filter: blur(2px);
+    }
+
+    .hero::before {
+      top: -260px;
+      right: -160px;
+      width: 640px;
+      height: 640px;
+      background: radial-gradient(circle, rgba(18, 168, 223, .25), transparent 68%);
+    }
+
+    .hero::after {
+      bottom: -330px;
+      left: -220px;
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(234, 63, 136, .13), transparent 68%);
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(360px, .9fr);
+      align-items: center;
+      gap: 68px;
+    }
+
+    .hero .eyebrow { color: #8bdfff; }
+
+    .hero h1 span {
+      color: #59c9f0;
+    }
+
+    .hero-copy > p {
+      max-width: 680px;
+      color: #c6d8e3;
+      font-size: 1.13rem;
+    }
+
+    .identity-marks {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 22px;
+    }
+
+    .identity-mark {
+      display: grid;
+      height: 54px;
+      min-width: 124px;
+      place-items: center;
+      padding: 7px 12px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, .97);
+      border: 1px solid rgba(255, 255, 255, .24);
+      border-radius: 11px;
+    }
+
+    .identity-mark img {
+      width: 142px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .identity-mark.anm { min-width: 172px; }
+    .identity-mark.anm img { width: 156px; }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 30px 0 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      font-weight: 750;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: #fff; background: var(--cyan-600); }
+    .button-primary:hover { background: var(--cyan-500); }
+    .button-pink { color: #fff; background: var(--pink-600); }
+    .button-pink:hover { background: var(--pink-500); }
+    .button-secondary { color: var(--navy-900); background: #fff; border-color: var(--line); }
+    .button-dark-outline { color: #fff; background: rgba(255, 255, 255, .04); border-color: rgba(255, 255, 255, .28); }
+    .button-dark-outline:hover { background: rgba(255, 255, 255, .1); }
+
+    .button svg,
+    .feature-icon svg,
+    .utility-icon svg,
+    .mini-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 10px;
+      color: #cfe4ef;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 999px;
+      font-size: .82rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 510px;
+    }
+
+    .product-card {
+      position: absolute;
+      inset: 22px 34px 24px 32px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: #0b2539;
+      border: 1px solid rgba(164, 214, 239, .2);
+      border-radius: 34px;
+      box-shadow: 0 34px 80px rgba(0, 0, 0, .35);
+    }
+
+    .product-card::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background:
+        linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: linear-gradient(to bottom, black, transparent 78%);
+    }
+
+    .product-card img {
+      position: relative;
+      z-index: 1;
+      width: min(74%, 360px);
+      aspect-ratio: 1;
+      object-fit: contain;
+      border-radius: 26px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .36);
+    }
+
+    .floating-card {
+      position: absolute;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 210px;
+      padding: 12px 14px;
+      color: var(--navy-900);
+      background: rgba(255, 255, 255, .96);
+      border: 1px solid #d7e5ed;
+      border-radius: 13px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .floating-card strong { display: block; font-size: .87rem; }
+    .floating-card small { display: block; color: var(--muted); font-size: .72rem; }
+    .floating-card.one { top: 4px; right: 0; }
+    .floating-card.two { bottom: 6px; left: 0; }
+    .floating-card.three { right: -12px; bottom: 100px; }
+
+    .mini-icon {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      flex: 0 0 auto;
+      place-items: center;
+      color: var(--cyan-700);
+      background: var(--cyan-100);
+      border-radius: 10px;
+    }
+
+    .floating-card.two .mini-icon { color: var(--pink-600); background: var(--pink-100); }
+    .floating-card.three .mini-icon { color: #fff; background: var(--slate-700); }
+
+    .release-bar {
+      position: relative;
+      z-index: 2;
+      margin-top: -1px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .release-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      align-items: center;
+      gap: 28px;
+      padding: 22px 0;
+    }
+
+    .release-file {
+      display: flex;
+      min-width: 0;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .release-file img {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 auto;
+      object-fit: cover;
+      border-radius: 11px;
+    }
+
+    .release-file strong,
+    .release-file small { display: block; }
+
+    .release-file strong {
+      overflow: hidden;
+      color: var(--navy-900);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .release-file small { margin-top: 2px; color: var(--muted); }
+
+    .release-facts {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    .release-facts b { color: var(--ink); }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .benefit-card,
+    .feature-nav-card,
+    .utility-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .benefit-card {
+      padding: 24px;
+    }
+
+    .benefit-card:hover,
+    .feature-nav-card:hover,
+    .utility-card:hover {
+      border-color: #a9c4d4;
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-3px);
+    }
+
+    .benefit-number {
+      display: inline-grid;
+      width: 36px;
+      height: 36px;
+      margin-bottom: 16px;
+      place-items: center;
+      color: var(--cyan-700);
+      background: var(--cyan-100);
+      border-radius: 10px;
+      font-weight: 800;
+    }
+
+    .benefit-card:nth-child(2) .benefit-number,
+    .benefit-card:nth-child(4) .benefit-number {
+      color: var(--pink-600);
+      background: var(--pink-100);
+    }
+
+    .benefit-card p { margin-bottom: 0; color: var(--muted); font-size: .93rem; }
+
+    .feature-nav-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .feature-nav-card {
+      display: flex;
+      min-height: 142px;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .feature-icon,
+    .utility-icon {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 14px;
+      place-items: center;
+      color: var(--cyan-700);
+      background: var(--cyan-100);
+      border-radius: 11px;
+    }
+
+    .feature-nav-card:nth-child(3n) .feature-icon,
+    .utility-card:nth-child(4n+2) .utility-icon {
+      color: var(--pink-600);
+      background: var(--pink-100);
+    }
+
+    .feature-nav-card strong { color: var(--navy-900); }
+    .feature-nav-card small { margin-top: 5px; color: var(--muted); }
+
+    .feature-list {
+      display: grid;
+      gap: 24px;
+    }
+
+    .feature-showcase {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+      min-height: 430px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .feature-showcase::before {
+      position: absolute;
+      z-index: 3;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 3px;
+      content: "";
+      background: linear-gradient(90deg, var(--cyan-500), var(--cyan-600) 58%, var(--pink-500));
+    }
+
+    .feature-showcase:nth-child(even) .feature-copy { order: 2; }
+    .feature-showcase:nth-child(even) .demo-frame { order: 1; }
+
+    .feature-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(30px, 4.5vw, 56px);
+    }
+
+    .feature-kicker {
+      margin-bottom: 10px;
+      color: var(--cyan-700);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .feature-copy h3 {
+      margin-bottom: 16px;
+      font-size: clamp(1.75rem, 3vw, 2.45rem);
+    }
+
+    .feature-copy > p { color: var(--muted); }
+
+    .check-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 18px;
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .check-list li {
+      position: relative;
+      padding-left: 24px;
+      color: #344d5e;
+      font-size: .92rem;
+    }
+
+    .check-list li::before {
+      position: absolute;
+      top: .32em;
+      left: 0;
+      display: grid;
+      width: 16px;
+      height: 16px;
+      content: "✓";
+      place-items: center;
+      color: #fff;
+      background: var(--cyan-600);
+      border-radius: 50%;
+      font-size: .65rem;
+      font-weight: 900;
+    }
+
+    .feature-showcase:nth-child(3n) .check-list li::before { background: var(--pink-600); }
+
+    .demo-frame {
+      position: relative;
+      display: grid;
+      min-height: 430px;
+      padding: clamp(20px, 2.4vw, 30px);
+      place-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 88% 12%, rgba(234, 63, 136, .10), transparent 28%),
+        radial-gradient(circle at 12% 88%, rgba(18, 168, 223, .14), transparent 32%),
+        linear-gradient(145deg, #eff6fa 0%, #e3eef4 100%);
+      border-left: 1px solid var(--line);
+      box-shadow: inset 12px 0 26px rgba(24, 65, 91, .025);
+    }
+
+    .demo-frame::before {
+      position: absolute;
+      inset: clamp(12px, 1.5vw, 18px);
+      content: "";
+      border: 1px solid rgba(117, 151, 172, .26);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, .28);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .78);
+    }
+
+    .feature-showcase:nth-child(even) .demo-frame {
+      border-right: 1px solid var(--line);
+      border-left: 0;
+    }
+
+    .demo-frame img,
+    .demo-frame video {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+      object-position: center;
+      overflow: hidden;
+      background: #f7fbfd;
+      border: 1px solid rgba(85, 125, 150, .34);
+      border-radius: 16px;
+      box-shadow:
+        0 18px 38px rgba(18, 55, 79, .16),
+        0 2px 7px rgba(18, 55, 79, .09),
+        inset 0 0 0 1px rgba(255, 255, 255, .72);
+    }
+
+    .demo-placeholder {
+      position: absolute;
+      inset: 22px;
+      display: grid;
+      place-items: center;
+      padding: 30px;
+      color: #315166;
+      background: #edf4f7;
+      border: 1px dashed #9eb7c7;
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    .demo-placeholder::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background:
+        linear-gradient(rgba(19, 66, 93, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(19, 66, 93, .035) 1px, transparent 1px);
+      background-size: 26px 26px;
+      border-radius: inherit;
+    }
+
+    .demo-placeholder-content { position: relative; z-index: 1; }
+
+    .demo-placeholder-icon {
+      display: grid;
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 16px;
+      place-items: center;
+      color: #fff;
+      background: var(--slate-700);
+      border-radius: 16px;
+      font-size: 1.5rem;
+    }
+
+    .demo-placeholder strong { display: block; color: var(--navy-900); font-size: 1rem; }
+    .demo-placeholder small { display: block; max-width: 300px; margin-top: 7px; color: var(--muted); }
+
+    .utility-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .utility-card {
+      padding: 22px;
+    }
+
+    .utility-card h3 { font-size: 1.05rem; }
+    .utility-card p { margin-bottom: 0; color: var(--muted); font-size: .9rem; }
+
+    .privacy-panel {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      align-items: center;
+      gap: 60px;
+      padding: clamp(30px, 5vw, 64px);
+      color: #fff;
+      background: var(--navy-900);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+    }
+
+    .privacy-panel h2 { color: #fff; }
+    .privacy-panel p { color: #c8dbe6; }
+
+    .video-guide-panel {
+      display: grid;
+      grid-template-columns: minmax(300px, .72fr) minmax(0, 1.28fr);
+      align-items: center;
+      gap: clamp(28px, 5vw, 64px);
+      padding: clamp(28px, 5vw, 58px);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+    }
+
+    .video-guide-panel .eyebrow { margin-bottom: 12px; }
+
+    .video-points {
+      display: grid;
+      gap: 9px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .video-points li {
+      position: relative;
+      padding-left: 26px;
+      color: var(--muted);
+      font-size: .93rem;
+    }
+
+    .video-points li::before {
+      position: absolute;
+      top: .27em;
+      left: 0;
+      display: grid;
+      width: 17px;
+      height: 17px;
+      content: "✓";
+      place-items: center;
+      color: #fff;
+      background: var(--cyan-600);
+      border-radius: 50%;
+      font-size: .65rem;
+      font-weight: 900;
+    }
+
+    .video-shell {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      background: var(--navy-950);
+      border: 1px solid #b8cad5;
+      border-radius: 18px;
+      box-shadow: 0 18px 42px rgba(13, 46, 68, .2);
+    }
+
+    .video-shell video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #071c2b;
+    }
+
+    .video-note {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .video-note::before {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      content: "";
+      background: var(--pink-500);
+      border-radius: 50%;
+    }
+
+    .security-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .security-list li {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 12px;
+    }
+
+    .security-list b,
+    .security-list small { display: block; }
+    .security-list small { margin-top: 3px; color: #bcd0dc; }
+
+    .security-mark {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      color: #fff;
+      background: var(--cyan-600);
+      border-radius: 10px;
+      font-weight: 900;
+    }
+
+    .download-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, .72fr);
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+    }
+
+    .download-copy { padding: clamp(32px, 5vw, 62px); }
+    .download-card { padding: clamp(28px, 4vw, 44px); background: #e8f2f7; border-left: 1px solid var(--line); }
+
+    .download-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .download-meta div {
+      padding: 13px;
+      background: #f5f9fb;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+
+    .download-meta b,
+    .download-meta small { display: block; }
+    .download-meta small { margin-bottom: 2px; color: var(--muted); }
+
+    .file-chip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding: 14px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    .file-chip img {
+      width: 52px;
+      height: 52px;
+      object-fit: cover;
+      border-radius: 11px;
+    }
+
+    .file-chip strong,
+    .file-chip small { display: block; }
+    .file-chip strong { word-break: break-word; }
+    .file-chip small { color: var(--muted); }
+
+    .hash-list { display: grid; gap: 10px; margin: 20px 0; }
+
+    .hash-row {
+      display: grid;
+      grid-template-columns: 74px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 8px;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+
+    .hash-row label { color: var(--muted); font-size: .78rem; font-weight: 800; }
+
+    .hash-value {
+      overflow: hidden;
+      color: var(--navy-900);
+      font-family: Consolas, "Courier New", monospace;
+      font-size: .78rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .copy-button {
+      padding: 6px 9px;
+      color: var(--cyan-700);
+      background: var(--cyan-100);
+      border: 0;
+      border-radius: 7px;
+      font-size: .75rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .download-buttons { display: grid; gap: 9px; }
+    .download-buttons .button { width: 100%; }
+
+    .setup-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .step {
+      position: relative;
+      padding: 22px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+
+    .step-number {
+      display: inline-grid;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 13px;
+      place-items: center;
+      color: #fff;
+      background: var(--slate-700);
+      border-radius: 9px;
+      font-weight: 800;
+    }
+
+    .step:nth-child(2) .step-number { background: var(--cyan-600); }
+    .step:nth-child(3) .step-number { background: var(--pink-600); }
+    .step p { margin-bottom: 0; color: var(--muted); font-size: .9rem; }
+
+    .faq-list { display: grid; max-width: 900px; gap: 10px; margin-inline: auto; }
+
+    .faq-list details {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    .faq-list summary {
+      position: relative;
+      padding: 18px 54px 18px 20px;
+      color: var(--navy-900);
+      font-weight: 750;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .faq-list summary::-webkit-details-marker { display: none; }
+
+    .faq-list summary::after {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      content: "+";
+      color: var(--cyan-700);
+      font-size: 1.35rem;
+      transform: translateY(-50%);
+    }
+
+    .faq-list details[open] summary::after { content: "−"; }
+
+    .faq-answer {
+      padding: 0 20px 18px;
+      color: var(--muted);
+    }
+
+    .site-footer {
+      padding: 46px 0 24px;
+      color: #bdd1dd;
+      background: var(--navy-950);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr .7fr;
+      gap: 48px;
+    }
+
+    .footer-logo { width: 180px; height: 76px; object-fit: contain; object-position: left center; }
+    .footer-brand p { max-width: 480px; }
+    .site-footer h3 { color: #fff; font-size: 1rem; }
+    .site-footer ul { margin: 0; padding: 0; list-style: none; }
+    .site-footer li + li { margin-top: 8px; }
+    .site-footer a { color: #bdd1dd; text-decoration: none; }
+    .site-footer a:hover { color: #fff; }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 34px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, .1);
+      color: #8ca8b8;
+      font-size: .82rem;
+    }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 999;
+      max-width: min(380px, calc(100% - 36px));
+      padding: 12px 16px;
+      color: #fff;
+      background: var(--navy-900);
+      border: 1px solid rgba(255, 255, 255, .15);
+      border-radius: 10px;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      transform: translateY(18px);
+      pointer-events: none;
+      transition: opacity .22s ease, transform .22s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 1040px) {
+      .nav-links {
+        position: fixed;
+        top: 72px;
+        right: 0;
+        bottom: 0;
+        width: min(340px, 88vw);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding: 20px;
+        background: var(--navy-950);
+        box-shadow: -20px 20px 50px rgba(0, 0, 0, .28);
+        transform: translateX(105%);
+        transition: transform .24s ease;
+      }
+
+      .nav-links.open { transform: none; }
+      .nav-links a { padding: 13px 14px; }
+      .menu-button { display: inline-grid; place-items: center; }
+      .nav-download { display: none; }
+      .hero-grid { grid-template-columns: 1fr 430px; gap: 28px; }
+      .benefit-grid, .feature-nav-grid { grid-template-columns: repeat(2, 1fr); }
+      .feature-showcase { grid-template-columns: 1fr; }
+      .feature-showcase:nth-child(even) .feature-copy,
+      .feature-showcase:nth-child(even) .demo-frame { order: initial; }
+      .demo-frame,
+      .feature-showcase:nth-child(even) .demo-frame { min-height: 0; border: 0; border-top: 1px solid var(--line); }
+      .privacy-panel { gap: 36px; }
+      .utility-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 820px) {
+      .section { padding: 68px 0; }
+      .hero { padding-top: 64px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 440px; max-width: 540px; width: 100%; margin-inline: auto; }
+      .release-grid { grid-template-columns: 1fr auto; }
+      .release-facts { display: none; }
+      .privacy-panel, .download-panel, .video-guide-panel { grid-template-columns: 1fr; }
+      .download-card { border-top: 1px solid var(--line); border-left: 0; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 600px) {
+      .container { width: min(calc(100% - 26px), var(--container)); }
+      .brand-logo { width: 102px; }
+      .brand-copy small { display: none; }
+      .hero { padding: 52px 0 56px; }
+      .hero-actions .button { width: 100%; }
+      .hero-visual { min-height: 360px; }
+      .product-card { inset: 18px 22px; }
+      .floating-card { min-width: 178px; padding: 9px 10px; }
+      .floating-card.three { display: none; }
+      .release-grid { grid-template-columns: 1fr; gap: 12px; }
+      .release-grid .button { width: 100%; }
+      .benefit-grid, .feature-nav-grid, .utility-grid, .setup-steps { grid-template-columns: 1fr; }
+      .check-list { grid-template-columns: 1fr; }
+      .demo-frame { min-height: 0; padding: 16px; }
+      .demo-frame::before { inset: 9px; border-radius: 15px; }
+      .demo-frame img,
+      .demo-frame video { border-radius: 12px; }
+      .privacy-panel { padding: 28px 20px; }
+      .download-meta { grid-template-columns: 1fr; }
+      .hash-row { grid-template-columns: 62px minmax(0, 1fr); }
+      .hash-row .copy-button { grid-column: 1 / -1; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-brand { grid-column: auto; }
+      .footer-bottom { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Đi đến nội dung chính</a>
+
+  <svg aria-hidden="true" width="0" height="0" style="position:absolute">
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6zM14 2v5h5"/></symbol>
+    <symbol id="i-table" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 9v11M15 9v11"/></symbol>
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4M7 12h10"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/><path d="M21 12a9 9 0 1 1-5-8.2"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16zM13.5 6.5l4 4"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6h7l2 2h9v12H3z"/></symbol>
+    <symbol id="i-archive" viewBox="0 0 24 24"><path d="M4 7h16v14H4zM3 3h18v4H3zM9 11h6"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></symbol>
+    <symbol id="i-hash" viewBox="0 0 24 24"><path d="M10 3 8 21M16 3l-2 18M4 9h17M3 15h17"/></symbol>
+    <symbol id="i-rename" viewBox="0 0 24 24"><path d="M4 7h10M4 12h7M4 17h5M15 18l5-5-3-3-5 5v3z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 20 6v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V4H4v12h4"/></symbol>
+    <symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 7 4 12l5 5M5 12h8a6 6 0 0 1 6 6"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h7a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H4zM20 4h-3a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h3z"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 13v7H4V6h7"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="CODE34 Office Assistant – Trang chủ">
+        <img class="brand-logo" data-image="code34Logo" src="assets/code34-logo.png" alt="CODE34">
+        <span class="brand-copy">
+          <strong>Office Assistant</strong>
+          <small>Trợ lý hành chính</small>
+        </span>
+      </a>
+
+      <nav class="nav-links" id="main-nav" aria-label="Điều hướng chính">
+        <a href="#tong-quan">Tổng quan</a>
+        <a href="#tinh-nang">Tính năng</a>
+        <a href="#tien-ich">Tiện ích nhỏ</a>
+        <a href="#an-toan">An toàn</a>
+        <a href="#video-huong-dan">Video hướng dẫn</a>
+        <a href="#tai-ve">Tải về</a>
+        <a href="#faq">Hỏi đáp</a>
+      </nav>
+
+      <a class="nav-download js-download-link" href="#tai-ve">
+        <svg aria-hidden="true"><use href="#i-download"/></svg>
+        Tải v10.8
+      </a>
+
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Mở menu">
+        <svg aria-hidden="true" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="identity-marks" aria-label="Nhận diện thương hiệu">
+            <span class="identity-mark">
+              <img data-image="code34Logo" src="assets/code34-logo.png" alt="Logo CODE34">
+            </span>
+            <span class="identity-mark anm">
+              <img data-image="anmLogo" src="assets/anm-logo.png" alt="Logo Phòng An ninh mạng và phòng, chống tội phạm sử dụng công nghệ cao – Công an tỉnh Đồng Tháp">
+            </span>
+          </div>
+          <p class="eyebrow">CODE34 Office Assistant · Windows</p>
+          <h1>Trợ lý hành chính,<br><span>gọn trong một công cụ.</span></h1>
+          <p>
+            Xử lý PDF, Word, Excel, tìm kiếm tài liệu, nén bảo mật, đổi tên tệp và tạo mã QR
+            trong một không gian làm việc rõ ràng, hiện đại và ưu tiên dữ liệu nội bộ.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary js-download-link" href="#tai-ve">
+              <svg aria-hidden="true"><use href="#i-download"/></svg>
+              Tải bản Windows v10.8
+            </a>
+            <a class="button button-dark-outline" href="#video-huong-dan">
+              <svg aria-hidden="true"><use href="#i-book"/></svg>
+              Xem video hướng dẫn
+            </a>
+          </div>
+
+          <div class="hero-meta" aria-label="Thông tin nổi bật">
+            <span>✓ Xử lý tại máy</span>
+            <span>✓ Bộ chạy ngoại tuyến</span>
+            <span>✓ Giao diện tiếng Việt</span>
+            <span>✓ PDF · Word · Excel · CA · ZIP · 7Z · RAR · QR</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Minh họa CODE34 Office Assistant">
+          <div class="product-card">
+            <img data-image="appIconTransparent" src="assets/code34-assistant-icon.png" alt="Biểu tượng CODE34 Office Assistant">
+          </div>
+
+          <div class="floating-card one">
+            <span class="mini-icon"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
+            <span><strong>Soát chính tả v2</strong><small>Gợi ý và sửa trực tiếp</small></span>
+          </div>
+          <div class="floating-card two">
+            <span class="mini-icon"><svg aria-hidden="true"><use href="#i-archive"/></svg></span>
+            <span><strong>CA · ZIP · 7Z · RAR</strong><small>Nén, kiểm tra, giải nén</small></span>
+          </div>
+          <div class="floating-card three">
+            <span class="mini-icon"><svg aria-hidden="true"><use href="#i-hash"/></svg></span>
+            <span><strong>MD5 / SHA-256</strong><small>Đối chiếu tệp nhanh</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="release-bar" aria-label="Phiên bản tải về">
+      <div class="container release-grid">
+        <div class="release-file">
+          <img data-image="appIconBackground" src="assets/code34-assistant-icon.png" alt="">
+          <span>
+            <strong>CongCu_XuLyVanBan_Master_v10.8.zip</strong>
+            <small>Bộ đầy đủ để sử dụng ngoại tuyến trên Windows</small>
+          </span>
+        </div>
+        <div class="release-facts">
+          <span><b>Phiên bản</b><br>10.8</span>
+          <span><b>Nền tảng</b><br>Windows 10/11</span>
+          <span><b>Dung lượng</b><br><span class="js-file-size">430.2 MB</span></span>
+        </div>
+        <a class="button button-pink js-download-link" href="#tai-ve">
+          <svg aria-hidden="true"><use href="#i-download"/></svg>
+          Tải phần mềm
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="tong-quan">
+      <div class="container">
+        <div class="section-heading center reveal">
+          <p class="eyebrow">Không chỉ là “công cụ lớn”</p>
+          <h2>Mỗi thao tác nhỏ đều được thiết kế để tiết kiệm thời gian</h2>
+          <p class="lead">
+            CODE34 Office Assistant gom các việc hành chính thường gặp vào một quy trình thống nhất,
+            đồng thời giữ lại những tiện ích nhỏ mà người làm tài liệu thực sự cần mỗi ngày.
+          </p>
+        </div>
+
+        <div class="benefit-grid">
+          <article class="benefit-card reveal">
+            <span class="benefit-number">01</span>
+            <h3>Một ứng dụng, nhiều luồng việc</h3>
+            <p>Không cần mở nhiều phần mềm rời để đọc bảng, xử lý PDF, tìm kiếm hay nén tài liệu.</p>
+          </article>
+          <article class="benefit-card reveal">
+            <span class="benefit-number">02</span>
+            <h3>Phù hợp văn bản tiếng Việt</h3>
+            <p>Soát lỗi, chuẩn hóa dòng, nhận dạng số ký hiệu và ngày ban hành theo nhu cầu hành chính.</p>
+          </article>
+          <article class="benefit-card reveal">
+            <span class="benefit-number">03</span>
+            <h3>Dữ liệu được xử lý tại máy</h3>
+            <p>Nội dung tài liệu không phải tải lên dịch vụ trực tuyến để thực hiện các chức năng chính.</p>
+          </article>
+          <article class="benefit-card reveal">
+            <span class="benefit-number">04</span>
+            <h3>Có xem trước và khả năng hoàn tác</h3>
+            <p>Ưu tiên kiểm tra trước khi đổi tên, sắp xếp hoặc xuất kết quả để giảm thao tác nhầm.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="tinh-nang">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Toàn bộ khả năng</p>
+          <h2>Từ dữ liệu bảng đến gói tài liệu bảo mật</h2>
+          <p class="lead">Chọn nhanh một nhóm để xem giải thích chi tiết và phần minh họa tương ứng.</p>
+        </div>
+
+        <div class="feature-nav-grid" aria-label="Danh mục tính năng">
+          <a class="feature-nav-card reveal" href="#du-lieu-bang">
+            <span class="feature-icon"><svg aria-hidden="true"><use href="#i-table"/></svg></span>
+            <strong>Dữ liệu bảng</strong><small>Đọc, lọc và sao chép bảng Word/PDF.</small>
+          </a>
+          <a class="feature-nav-card reveal" href="#pdf-word">
+            <span class="feature-icon"><svg aria-hidden="true"><use href="#i-scan"/></svg></span>
+            <strong>PDF → Word & OCR</strong><small>Trích xuất PDF/ảnh bằng nhiều cơ chế đọc.</small>
+          </a>
+          <a class="feature-nav-card reveal" href="#chinh-ta">
+            <span class="feature-icon"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
+            <strong>Soát chính tả</strong><small>Gợi ý sửa và bổ sung từ điển ngay khi làm việc.</small>
+          </a>
+          <a class="feature-nav-card reveal" href="#cong-cu-pdf">
+            <span class="feature-icon"><svg aria-hidden="true"><use href="#i-edit"/></svg></span>
+            <strong>Biên tập PDF</strong><small>Gộp trang, xoay, đóng dấu và che dữ liệu.</small>
+          </a>
+          <a class="feature-nav-card reveal" href="#tim-kiem">
+            <span class="feature-icon"><svg aria-hidden="true"><use href="#i-search"/></svg></span>
+            <strong>Tìm kiếm & sắp xếp</strong><small>Quét nội dung, gom tệp và hoàn tác an toàn.</small>
+          </a>
+          <a class="feature-nav-card reveal" href="#excel">
+            <span class="feature-icon"><svg aria-hidden="true"><use href="#i-table"/></svg></span>
+            <strong>Excel & tổng hợp</strong><small>Gộp dữ liệu, tách file và gộp nhiều sheet.</small>
+          </a>
+          <a class="feature-nav-card reveal" href="#nen-giai-nen">
+            <span class="feature-icon"><svg aria-hidden="true"><use href="#i-archive"/></svg></span>
+            <strong>Nén & giải nén</strong><small>CA, ZIP, 7Z, RAR, mật khẩu và chia nhỏ.</small>
+          </a>
+          <a class="feature-nav-card reveal" href="#doi-ten">
+            <span class="feature-icon"><svg aria-hidden="true"><use href="#i-rename"/></svg></span>
+            <strong>Đổi tên hàng loạt</strong><small>Quy tắc cơ bản kết hợp nhận dạng văn bản.</small>
+          </a>
+          <a class="feature-nav-card reveal" href="#tao-qr">
+            <span class="feature-icon"><svg aria-hidden="true"><use href="#i-scan"/></svg></span>
+            <strong>Tạo mã QR</strong><small>Tạo, tùy chỉnh và lưu mã ngay trên máy.</small>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white" aria-label="Chi tiết tính năng">
+      <div class="container feature-list">
+        <article class="feature-showcase reveal" id="du-lieu-bang">
+          <div class="feature-copy">
+            <span class="feature-kicker">01 · Dữ liệu bảng</span>
+            <h3>Đọc bảng Word và PDF theo cách dễ kiểm tra</h3>
+            <p>Nạp bảng, chọn đúng khối dữ liệu rồi lọc theo nhiều cột trước khi sao chép kết quả cần dùng.</p>
+            <ul class="check-list">
+              <li>Đọc bảng từ DOCX và PDF</li>
+              <li>Chọn bảng khi tệp có nhiều bảng</li>
+              <li>Tối đa 3 nhóm điều kiện lọc</li>
+              <li>Chọn nhiều giá trị trong một cột</li>
+              <li>Nhấp đúp để sao chép ô</li>
+              <li>Sao chép dòng hoặc toàn bộ bảng lọc</li>
+            </ul>
+          </div>
+          <div class="demo-frame" data-demo="table" aria-label="Minh họa chức năng dữ liệu bảng"></div>
+        </article>
+
+        <article class="feature-showcase reveal" id="pdf-word">
+          <div class="feature-copy">
+            <span class="feature-kicker">02 · PDF → Word & OCR</span>
+            <h3>Trích xuất chữ từ PDF hoặc hình ảnh</h3>
+            <p>Tự động chọn cơ chế đọc phù hợp, theo dõi tiến trình từng trang rồi chuẩn hóa văn bản trước khi xuất.</p>
+            <ul class="check-list">
+              <li>Mở PDF, PNG, JPG, JPEG, BMP</li>
+              <li>Tự động, Tesseract hoặc EasyOCR</li>
+              <li>Đọc lớp chữ hoặc OCR tài liệu scan</li>
+              <li>Gộp dòng rời thành đoạn văn</li>
+              <li>Tự động chuyển sang soát chính tả</li>
+              <li>Xuất Word hoặc lưu TXT</li>
+            </ul>
+          </div>
+          <div class="demo-frame" data-demo="pdfWord" aria-label="Minh họa chức năng PDF sang Word"></div>
+        </article>
+
+        <article class="feature-showcase reveal" id="chinh-ta">
+          <div class="feature-copy">
+            <span class="feature-kicker">03 · Soát chính tả tiếng Việt</span>
+            <h3>Không chỉ báo lỗi — còn hỗ trợ sửa và học từ mới</h3>
+            <p>Hệ thống đánh dấu vị trí cần xem, hiển thị gợi ý bên cạnh và cho phép cập nhật từ điển trong lúc làm việc.</p>
+            <ul class="check-list">
+              <li>Mở Word/TXT hoặc dán văn bản</li>
+              <li>Tự động hiển thị danh sách gợi ý</li>
+              <li>Nhấp vùng tô màu để chọn cách sửa</li>
+              <li>Thay một lỗi hoặc thay toàn bộ</li>
+              <li>Thêm cặp từ sai → đúng vào từ điển</li>
+              <li>Thêm từ đúng để không cảnh báo lại</li>
+              <li>Hoàn tác bằng Ctrl+Z</li>
+              <li>Chuẩn hóa Word theo NĐ30</li>
+            </ul>
+          </div>
+          <div class="demo-frame" data-demo="spellcheck" aria-label="Minh họa chức năng soát chính tả"></div>
+        </article>
+
+        <article class="feature-showcase reveal" id="cong-cu-pdf">
+          <div class="feature-copy">
+            <span class="feature-kicker">04 · Công cụ PDF</span>
+            <h3>Biên tập trang, đóng dấu và che dữ liệu nhạy cảm</h3>
+            <p>Một màn hình xem trước để sắp xếp trang và áp dụng các công cụ bổ sung trước khi lưu bản mới.</p>
+            <ul class="check-list">
+              <li>Mở hoặc gộp nhiều PDF</li>
+              <li>Đổi thứ tự, xoay và xóa trang</li>
+              <li>Thêm văn bản rồi kéo đến vị trí mong muốn</li>
+              <li>Đóng dấu bằng chữ, hình hoặc kết hợp</li>
+              <li>Che số CCCD, số điện thoại, cụm từ riêng</li>
+              <li>Lưu PDF thường hoặc lưu nén</li>
+            </ul>
+          </div>
+          <div class="demo-frame" data-demo="pdfTools" aria-label="Minh họa chức năng biên tập PDF"></div>
+        </article>
+
+        <article class="feature-showcase reveal" id="tim-kiem">
+          <div class="feature-copy">
+            <span class="feature-kicker">05 · Tìm kiếm & sắp xếp</span>
+            <h3>Tìm đúng tài liệu và gom đúng nơi</h3>
+            <p>Tìm theo tên hoặc quét nội dung trong nhiều định dạng; sau đó có thể sắp xếp tệp theo nhóm với bước xem trước.</p>
+            <ul class="check-list">
+              <li>Tìm theo tên hoặc nội dung</li>
+              <li>Đọc Word, PDF, Excel, ảnh và văn bản</li>
+              <li>Tùy chọn OCR cho tài liệu scan</li>
+              <li>Mở tệp, mở thư mục, sao chép đường dẫn</li>
+              <li>Gom PDF, Word, Excel, ảnh và video</li>
+              <li>Nhận biết trùng thật bằng SHA-256</li>
+              <li>Không tự xóa tệp trùng</li>
+              <li>Hoàn tác lần sắp xếp gần nhất</li>
+            </ul>
+          </div>
+          <div class="demo-frame" data-demo="searchOrganize" aria-label="Minh họa chức năng tìm kiếm và sắp xếp"></div>
+        </article>
+
+        <article class="feature-showcase reveal" id="excel">
+          <div class="feature-copy">
+            <span class="feature-kicker">06 · Excel & tổng hợp</span>
+            <h3>Kết hợp dữ liệu từ nhiều nguồn, tách và gộp Excel</h3>
+            <p>Đưa dữ liệu bảng từ DOCX, PDF và Excel về một tệp tổng; đồng thời hỗ trợ những thao tác Excel thường gặp.</p>
+            <ul class="check-list">
+              <li>Gộp bảng từ DOCX, PDF, XLS/XLSX</li>
+              <li>Chọn mẫu cấu trúc cần kết xuất</li>
+              <li>Ghi tên tài liệu gốc vào kết quả</li>
+              <li>Tách Excel theo giá trị của một cột</li>
+              <li>Xem trước tên file và số dòng sau tách</li>
+              <li>Gộp nhiều file vào workbook nhiều sheet</li>
+            </ul>
+          </div>
+          <div class="demo-frame" data-demo="excel" aria-label="Minh họa chức năng Excel và tổng hợp"></div>
+        </article>
+
+        <article class="feature-showcase reveal" id="nen-giai-nen">
+          <div class="feature-copy">
+            <span class="feature-kicker">07 · Nén & giải nén</span>
+            <h3>Một nơi cho CA, ZIP, 7Z và RAR</h3>
+            <p>Tạo gói theo nhu cầu trao đổi, kiểm tra nội dung trước khi giải nén và lấy đúng phần tài liệu cần sử dụng.</p>
+            <ul class="check-list">
+              <li>Tạo gói CA, ZIP và 7Z</li>
+              <li>Xem và giải nén CA, ZIP, 7Z, RAR</li>
+              <li>Chọn mức nén nhanh, cân bằng hoặc tối đa</li>
+              <li>Bảo vệ bằng mật khẩu</li>
+              <li>Chia nhỏ 100 MB, 500 MB, 1 GB, 2 GB</li>
+              <li>Giải nén toàn bộ hoặc mục đã chọn</li>
+              <li>Đổi tên, ghi đè hoặc bỏ qua tệp trùng</li>
+              <li>Kiểm tra gói và lấy MD5/SHA-256</li>
+            </ul>
+          </div>
+          <div class="demo-frame" data-demo="archive" aria-label="Minh họa chức năng nén và giải nén"></div>
+        </article>
+
+        <article class="feature-showcase reveal" id="doi-ten">
+          <div class="feature-copy">
+            <span class="feature-kicker">08 · Đổi tên tệp hàng loạt</span>
+            <h3>Đổi tên theo quy tắc hoặc theo nội dung văn bản</h3>
+            <p>Xem trước toàn bộ tên dự kiến rồi mới thực hiện, phù hợp khi cần chuẩn hóa nhiều hồ sơ cùng lúc.</p>
+            <ul class="check-list">
+              <li>Bỏ dấu tiếng Việt</li>
+              <li>Xử lý khoảng trắng, dấu gạch ngang/gạch dưới</li>
+              <li>Thay tên, thêm tiền tố hoặc hậu tố</li>
+              <li>Đánh số thứ tự tự động</li>
+              <li>Lấy số/ký hiệu văn bản</li>
+              <li>Lấy ngày ban hành theo nhiều định dạng</li>
+              <li>OCR trang đầu của PDF scan</li>
+              <li>Xem trước và kiểm tra trùng tên</li>
+            </ul>
+          </div>
+          <div class="demo-frame" data-demo="rename" aria-label="Minh họa chức năng đổi tên tệp"></div>
+        </article>
+
+        <article class="feature-showcase reveal" id="tao-qr">
+          <div class="feature-copy">
+            <span class="feature-kicker">09 · Tạo mã QR ngoại tuyến</span>
+            <h3>Tạo mã QR đẹp mà không cần đưa nội dung lên web</h3>
+            <p>Tạo nhanh mã QR phục vụ chia sẻ đường dẫn hoặc nội dung công việc, xem trước rồi lưu thành ảnh để sử dụng.</p>
+            <ul class="check-list">
+              <li>Tạo QR từ đường dẫn hoặc nội dung</li>
+              <li>Hoạt động hoàn toàn ngoại tuyến</li>
+              <li>Xem trước trước khi lưu</li>
+              <li>Chọn kiểu trình bày phù hợp</li>
+              <li>Tùy chỉnh màu theo nhu cầu</li>
+              <li>Lưu ảnh QR để chèn vào tài liệu</li>
+            </ul>
+          </div>
+          <div class="demo-frame" data-demo="qr" aria-label="Minh họa chức năng tạo mã QR"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="tien-ich">
+      <div class="container">
+        <div class="section-heading center reveal">
+          <p class="eyebrow">Tiện ích nhỏ, giá trị thật</p>
+          <h2>Những chi tiết khiến công cụ thuận tay hơn mỗi ngày</h2>
+          <p class="lead">Không nằm ở tên tab lớn, nhưng thường là lý do người dùng muốn tiếp tục sử dụng phần mềm.</p>
+        </div>
+
+        <div class="utility-grid">
+          <article class="utility-card reveal">
+            <span class="utility-icon"><svg aria-hidden="true"><use href="#i-copy"/></svg></span>
+            <h3>Sao chép đúng phần cần dùng</h3>
+            <p>Nhấp đúp để lấy một ô; menu chuột phải để lấy một dòng hoặc toàn bộ kết quả đã lọc.</p>
+          </article>
+          <article class="utility-card reveal">
+            <span class="utility-icon"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
+            <h3>Gợi ý sửa nằm ngay bên cạnh</h3>
+            <p>Đếm số vị trí cần xem, nhảy đến từng lỗi và hiển thị cách sửa ngay trong không gian soạn thảo.</p>
+          </article>
+          <article class="utility-card reveal">
+            <span class="utility-icon"><svg aria-hidden="true"><use href="#i-book"/></svg></span>
+            <h3>Từ điển có thể bổ sung</h3>
+            <p>Thêm cặp sai–đúng hoặc xác nhận một từ đúng để hệ thống thích nghi với ngôn ngữ công việc thực tế.</p>
+          </article>
+          <article class="utility-card reveal">
+            <span class="utility-icon"><svg aria-hidden="true"><use href="#i-edit"/></svg></span>
+            <h3>Gộp dòng thành đoạn</h3>
+            <p>Làm sạch tình trạng xuống dòng rời rạc sau khi sao chép hoặc trích xuất văn bản từ PDF.</p>
+          </article>
+          <article class="utility-card reveal">
+            <span class="utility-icon"><svg aria-hidden="true"><use href="#i-hash"/></svg></span>
+            <h3>MD5 và SHA-256 trong vài thao tác</h3>
+            <p>Chọn bất kỳ tệp nào, tính hai mã kiểm tra và sao chép để đối chiếu tệp gửi với tệp nhận.</p>
+          </article>
+          <article class="utility-card reveal">
+            <span class="utility-icon"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+            <h3>Kiểm tra gói trước khi giải nén</h3>
+            <p>Đọc danh sách, trạng thái bảo vệ và kiểm tra toàn vẹn trước khi lấy dữ liệu ra khỏi gói.</p>
+          </article>
+          <article class="utility-card reveal">
+            <span class="utility-icon"><svg aria-hidden="true"><use href="#i-folder"/></svg></span>
+            <h3>Chỉ giải nén phần được chọn</h3>
+            <p>Không phải lấy toàn bộ gói khi chỉ cần một vài tệp hoặc thư mục bên trong.</p>
+          </article>
+          <article class="utility-card reveal">
+            <span class="utility-icon"><svg aria-hidden="true"><use href="#i-undo"/></svg></span>
+            <h3>Hoàn tác sắp xếp gần nhất</h3>
+            <p>Khôi phục các tệp vừa di chuyển khi nhận ra quy tắc hoặc nơi gom chưa đúng ý.</p>
+          </article>
+          <article class="utility-card reveal">
+            <span class="utility-icon"><svg aria-hidden="true"><use href="#i-copy"/></svg></span>
+            <h3>Không xóa tệp trùng âm thầm</h3>
+            <p>Tệp trùng tên được giữ bằng hậu tố (2), (3)… và trường hợp cần thiết được đối chiếu bằng SHA-256.</p>
+          </article>
+          <article class="utility-card reveal">
+            <span class="utility-icon"><svg aria-hidden="true"><use href="#i-archive"/></svg></span>
+            <h3>CA Quick mở gói tức thì</h3>
+            <p>Nhấp đúp gói nén để xem, kiểm tra và giải nén nhanh mà không làm gián đoạn tác vụ ở cửa sổ chính.</p>
+          </article>
+          <article class="utility-card reveal">
+            <span class="utility-icon"><svg aria-hidden="true"><use href="#i-file"/></svg></span>
+            <h3>Nhận dạng trang đầu</h3>
+            <p>Đọc số, ký hiệu và ngày ban hành từ nội dung để tạo tên tệp có cấu trúc.</p>
+          </article>
+          <article class="utility-card reveal">
+            <span class="utility-icon"><svg aria-hidden="true"><use href="#i-external"/></svg></span>
+            <h3>Đặt làm trợ lý mở gói mặc định</h3>
+            <p>Kết nối phần mềm với các định dạng hỗ trợ để thao tác mở và giải nén thuận tiện hơn trên Windows.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="an-toan">
+      <div class="container">
+        <div class="privacy-panel reveal">
+          <div>
+            <p class="eyebrow">Dữ liệu và tính toàn vẹn</p>
+            <h2>Thiết kế cho tài liệu cần được kiểm soát tại máy</h2>
+            <p>
+              Các chức năng xử lý tài liệu chính hoạt động cục bộ. Định dạng CA hỗ trợ bảo vệ mật khẩu,
+              kiểm tra từng tệp và chia gói lớn thành nhiều phần khi cần trao đổi.
+            </p>
+            <a class="button button-dark-outline" href="#tai-ve">Xem thông tin bản tải</a>
+          </div>
+
+          <ul class="security-list">
+            <li>
+              <span class="security-mark">✓</span>
+              <span><b>Xử lý cục bộ</b><small>PDF, Word, Excel, OCR và các luồng chính được thực hiện trên máy người dùng.</small></span>
+            </li>
+            <li>
+              <span class="security-mark">A</span>
+              <span><b>CA dùng AES-GCM và Argon2id</b><small>Mật khẩu được dẫn xuất bằng Argon2id; nội dung bảo vệ bằng mã hóa xác thực AES-GCM.</small></span>
+            </li>
+            <li>
+              <span class="security-mark">#</span>
+              <span><b>MD5 để tương thích, SHA-256 để kiểm tra chính</b><small>Hiển thị cả hai mã để thuận tiện đối chiếu trong nhiều quy trình khác nhau.</small></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="video-huong-dan">
+      <div class="container">
+        <div class="video-guide-panel reveal">
+          <div>
+            <p class="eyebrow">Video hướng dẫn toàn diện</p>
+            <h2>Xem trọn quy trình trước khi bắt đầu</h2>
+            <p class="lead">
+              Video đi qua giao diện, cách chọn công cụ và quy trình xử lý tài liệu để người dùng mới có thể làm quen nhanh hơn.
+            </p>
+            <ul class="video-points">
+              <li>Nhận biết từng khu vực và nhóm chức năng</li>
+              <li>Theo dõi thao tác thực tế ngay trên phần mềm</li>
+              <li>Có thể phóng to hoặc xem toàn màn hình</li>
+            </ul>
+          </div>
+          <div>
+            <div class="video-shell">
+              <video id="guide-video" controls preload="metadata" data-guide-video aria-label="Video hướng dẫn toàn diện CODE34 Office Assistant">
+                Trình duyệt hiện tại không hỗ trợ phát video HTML5.
+              </video>
+            </div>
+            <p class="video-note" id="video-note">Video được phát trực tiếp trên trang và chỉ bắt đầu khi người xem bấm nút phát.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white" id="tai-ve">
+      <div class="container">
+        <div class="download-panel reveal">
+          <div class="download-copy">
+            <p class="eyebrow">Bản phát hành hiện tại</p>
+            <h2>Tải CODE34 Office Assistant v10.8</h2>
+            <p class="lead">
+              Bộ đầy đủ dành cho Windows, đóng gói để có thể sử dụng các thành phần cần thiết khi ngoại tuyến.
+            </p>
+
+            <div class="download-meta">
+              <div><small>Phiên bản</small><b>10.8</b></div>
+              <div><small>Nền tảng</small><b>Windows 10/11</b></div>
+              <div><small>Dung lượng</small><b class="js-file-size">430.2 MB</b></div>
+            </div>
+
+            <div class="setup-steps" id="huong-dan">
+              <article class="step">
+                <span class="step-number">1</span>
+                <h3>Tải tệp ZIP</h3>
+                <p>Tải đúng tệp phát hành và có thể đối chiếu MD5/SHA-256 bên cạnh.</p>
+              </article>
+              <article class="step">
+                <span class="step-number">2</span>
+                <h3>Giải nén đầy đủ</h3>
+                <p>Không chạy trực tiếp bên trong tệp ZIP; hãy giải nén toàn bộ ra một thư mục riêng.</p>
+              </article>
+              <article class="step">
+                <span class="step-number">3</span>
+                <h3>Mở phần mềm</h3>
+                <p>Chạy tệp EXE trong thư mục đã giải nén và làm theo tài liệu hướng dẫn khi cần.</p>
+              </article>
+            </div>
+          </div>
+
+          <aside class="download-card" aria-label="Thông tin tệp tải về">
+            <div class="file-chip">
+              <img data-image="appIconBackground" src="assets/code34-assistant-icon.png" alt="">
+              <span>
+                <strong>CongCu_XuLyVanBan_Master_v10.8.zip</strong>
+                <small>Bộ ngoại tuyến · Windows</small>
+              </span>
+            </div>
+
+            <div class="hash-list">
+              <div class="hash-row">
+                <label>MD5</label>
+                <span class="hash-value" id="md5-value">4f5c16857acda8d13c00ac2ac7e10da4</span>
+                <button class="copy-button" type="button" data-copy="md5-value">Sao chép</button>
+              </div>
+              <div class="hash-row">
+                <label>SHA-256</label>
+                <span class="hash-value" id="sha256-value">0bbeccef4fdb8756e2b39f0b75405ad18e6d1a8576be893f8d29fbe940b33208</span>
+                <button class="copy-button" type="button" data-copy="sha256-value">Sao chép</button>
+              </div>
+            </div>
+
+            <div class="download-buttons">
+              <a class="button button-pink js-download-link" href="https://drive.google.com/drive/folders/1Zbk7JNYkOAZd_X7bnu9b4u85VKDz6EYF?usp=sharing">
+                <svg aria-hidden="true"><use href="#i-download"/></svg>
+                Tải từ Google Drive
+              </a>
+              <a class="button button-secondary" href="#video-huong-dan">
+                <svg aria-hidden="true"><use href="#i-book"/></svg>
+                Xem video hướng dẫn
+              </a>
+            </div>
+            <p class="muted" style="margin:16px 0 0;font-size:.82rem">
+              Khuyến nghị kiểm tra SHA-256 sau khi tải nếu tệp được chuyển tiếp qua nhiều kênh.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="faq">
+      <div class="container">
+        <div class="section-heading center reveal">
+          <p class="eyebrow">Câu hỏi thường gặp</p>
+          <h2>Trước khi bắt đầu</h2>
+        </div>
+
+        <div class="faq-list">
+          <details class="reveal">
+            <summary>Phần mềm có cần Internet để xử lý tài liệu không?</summary>
+            <div class="faq-answer">Các chức năng xử lý tài liệu chính được thiết kế để chạy tại máy. Internet chỉ cần khi người dùng chủ động mở liên kết tải hoặc tài liệu hướng dẫn trực tuyến.</div>
+          </details>
+          <details class="reveal">
+            <summary>Vì sao phải giải nén toàn bộ tệp ZIP trước khi chạy?</summary>
+            <div class="faq-answer">Bộ ngoại tuyến có nhiều thư viện và thành phần đi kèm. Chạy trực tiếp trong tệp ZIP có thể làm phần mềm không tìm thấy OCR, 7-Zip hoặc dữ liệu từ điển.</div>
+          </details>
+          <details class="reveal">
+            <summary>CA khác ZIP và 7Z ở điểm nào?</summary>
+            <div class="faq-answer">CA là định dạng dành cho luồng trao đổi tài liệu có kiểm tra riêng và tùy chọn bảo vệ bằng mật khẩu. ZIP ưu tiên tính phổ biến; 7Z ưu tiên tỷ lệ nén. RAR được hỗ trợ ở chế độ xem và giải nén.</div>
+          </details>
+          <details class="reveal">
+            <summary>Có thể chỉ giải nén một tệp bên trong gói không?</summary>
+            <div class="faq-answer">Có. Chọn một hoặc nhiều dòng trong danh sách rồi dùng “Giải nén mục đã chọn”. Nếu không chọn, có thể giải nén toàn bộ gói.</div>
+          </details>
+          <details class="reveal">
+            <summary>Hệ thống soát chính tả có thể bổ sung từ riêng không?</summary>
+            <div class="faq-answer">Có. Người dùng có thể thêm cặp từ sai–đúng hoặc xác nhận một từ đúng ngay trong quá trình rà soát để phù hợp hơn với từ ngữ chuyên môn.</div>
+          </details>
+          <details class="reveal">
+            <summary>MD5 và SHA-256 dùng để làm gì?</summary>
+            <div class="faq-answer">Hai mã giúp đối chiếu xem tệp nhận được có giống tệp gốc hay không. SHA-256 là mã kiểm tra chính; MD5 được hiển thị để tương thích với quy trình cũ.</div>
+          </details>
+          <details class="reveal">
+            <summary>Tính năng tạo mã QR có cần kết nối Internet không?</summary>
+            <div class="faq-answer">Không. Mã QR được tạo trực tiếp trên máy. Người dùng chỉ cần Internet khi nội dung của mã dẫn đến một trang web và muốn mở trang đó.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+            <img class="footer-logo" data-image="code34Logo" src="assets/code34-logo.png" alt="CODE34">
+            <img class="footer-logo" data-image="anmLogo" src="assets/anm-logo.png" alt="Phòng An ninh mạng và phòng, chống tội phạm sử dụng công nghệ cao – Công an tỉnh Đồng Tháp">
+          </div>
+          <p>CODE34 Office Assistant – Trợ lý hành chính và xử lý tài liệu chuyên nghiệp dành cho Windows.</p>
+        </div>
+        <div>
+          <h3>Khám phá</h3>
+          <ul>
+            <li><a href="#tinh-nang">Tất cả tính năng</a></li>
+            <li><a href="#tien-ich">Tiện ích nhỏ</a></li>
+            <li><a href="#an-toan">An toàn dữ liệu</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Hỗ trợ</h3>
+          <ul>
+            <li><a href="#video-huong-dan">Video hướng dẫn toàn diện</a></li>
+            <li><a href="#faq">Câu hỏi thường gặp</a></li>
+            <li><a href="#tai-ve">Thông tin bản tải</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="current-year"></span> CODE34. All rights reserved.</span>
+        <span>CODE34 Office Assistant · Phiên bản 10.8</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    /* ============================================================
+       CẤU HÌNH NỘI DUNG WEBSITE
+       - Link GIF có thể là .gif/.webp/.png/.jpg.
+       - Nếu dùng .mp4 hoặc .webm, website sẽ tự tạo video lặp.
+       - Khi ra phiên bản mới, chỉ cần cập nhật khối này và các dòng
+         phiên bản/tên tệp đang hiển thị trong phần Tải về.
+       ============================================================ */
+    const SITE_CONFIG = {
+      downloadUrl: "https://drive.google.com/drive/folders/1Zbk7JNYkOAZd_X7bnu9b4u85VKDz6EYF?usp=sharing",
+      fileSize: "430.2 MB",
+      md5: "4f5c16857acda8d13c00ac2ac7e10da4",
+      sha256: "0bbeccef4fdb8756e2b39f0b75405ad18e6d1a8576be893f8d29fbe940b33208",
+      guideVideoUrl: "https://storage.googleapis.com/menu-tamvy/CONG_CU_XLVB/xu%20ly%20du%20lieu.mp4",
+
+      images: {
+        code34Logo: "https://storage.googleapis.com/menu-tamvy/CONG_CU_XLVB/code34%20Image%20Aug%2030%2C%202026%2C%2004_47_49%20PM.png",
+        anmLogo: "https://storage.googleapis.com/menu-tamvy/CONG_CU_XLVB/Logo_ANM_chrome.png",
+        appIconTransparent: "https://storage.googleapis.com/menu-tamvy/CONG_CU_XLVB/XLVB_Tronsuot.png",
+        appIconBackground: "https://storage.googleapis.com/menu-tamvy/CONG_CU_XLVB/XLBV_conen.png"
+      },
+
+      demos: {
+        table: "https://storage.googleapis.com/menu-tamvy/CONG_CU_XLVB/copybang.gif",
+        pdfWord: "https://storage.googleapis.com/menu-tamvy/CONG_CU_XLVB/PDFtoWord.gif",
+        spellcheck: "https://storage.googleapis.com/menu-tamvy/CONG_CU_XLVB/checkchinhta.gif",
+        pdfTools: "https://storage.googleapis.com/menu-tamvy/CONG_CU_XLVB/suapdf.gif",
+        searchOrganize: "https://storage.googleapis.com/menu-tamvy/CONG_CU_XLVB/timkiem.gif",
+        excel: "https://storage.googleapis.com/menu-tamvy/CONG_CU_XLVB/goptach.gif",
+        archive: "https://storage.googleapis.com/menu-tamvy/CONG_CU_XLVB/nengiainen.gif",
+        rename: "https://storage.googleapis.com/menu-tamvy/CONG_CU_XLVB/doiten.gif",
+        qr: "https://storage.googleapis.com/menu-tamvy/CONG_CU_XLVB/quetQR.png"
+      }
+    };
+
+    const demoLabels = {
+      table: "Dữ liệu bảng: mở, lọc và sao chép",
+      pdfWord: "PDF → Word: trích xuất và chuẩn hóa",
+      spellcheck: "Soát chính tả: gợi ý, sửa và thêm từ điển",
+      pdfTools: "Biên tập PDF: trang, dấu và bảo mật",
+      searchOrganize: "Tìm kiếm nội dung và sắp xếp tệp",
+      excel: "Gộp dữ liệu, tách file và gộp sheet Excel",
+      archive: "Tạo, kiểm tra và giải nén gói tài liệu",
+      rename: "Xem trước và đổi tên tệp hàng loạt",
+      qr: "Tạo và tùy chỉnh mã QR ngoại tuyến"
+    };
+
+    const toast = document.getElementById("toast");
+    let toastTimer;
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      window.clearTimeout(toastTimer);
+      toastTimer = window.setTimeout(() => toast.classList.remove("show"), 2600);
+    }
+
+    function validLink(value) {
+      return typeof value === "string" && /^(https?:\/\/|\.\/|\.\.\/|assets\/)/i.test(value.trim());
+    }
+
+    function setupLinks(selector, value, fallbackId, missingMessage) {
+      document.querySelectorAll(selector).forEach(link => {
+        if (validLink(value)) {
+          link.href = value.trim();
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+        } else {
+          link.href = fallbackId;
+          link.addEventListener("click", event => {
+            if (fallbackId === "#") event.preventDefault();
+            showToast(missingMessage);
+          });
+        }
+      });
+    }
+
+    function setupImages() {
+      Object.entries(SITE_CONFIG.images).forEach(([key, value]) => {
+        if (!validLink(value)) return;
+        document.querySelectorAll(`[data-image="${key}"]`).forEach(image => {
+          const fallback = image.getAttribute("src");
+          image.addEventListener("error", () => {
+            if (image.getAttribute("src") !== fallback) image.setAttribute("src", fallback);
+          }, { once: true });
+          image.setAttribute("src", value.trim());
+        });
+      });
+    }
+
+    function createDemo(key, url) {
+      const frame = document.querySelector(`[data-demo="${key}"]`);
+      if (!frame) return;
+
+      const source = typeof url === "string" ? url.trim() : "";
+      const label = demoLabels[key] || "Video minh họa tính năng";
+      const cleanSource = source.split("?")[0].toLowerCase();
+
+      const showPlaceholder = (note = "Ảnh động minh họa sẽ được cập nhật tại đây.") => {
+        frame.innerHTML = `
+          <div class="demo-placeholder">
+            <div class="demo-placeholder-content">
+              <span class="demo-placeholder-icon">▶</span>
+              <strong>${label}</strong>
+              <small>${note}</small>
+            </div>
+          </div>`;
+      };
+
+      if (validLink(source) && /\.(mp4|webm|ogg)$/.test(cleanSource)) {
+        const video = document.createElement("video");
+        video.src = source;
+        video.muted = true;
+        video.loop = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        video.preload = "metadata";
+        video.setAttribute("aria-label", label);
+        video.addEventListener("error", () => showPlaceholder("Không tải được video minh họa. Vui lòng kiểm tra quyền truy cập của liên kết."), { once: true });
+        frame.appendChild(video);
+        return;
+      }
+
+      if (validLink(source)) {
+        const image = document.createElement("img");
+        image.src = source;
+        image.alt = label;
+        image.loading = "lazy";
+        image.decoding = "async";
+        image.addEventListener("error", () => showPlaceholder("Không tải được ảnh minh họa. Vui lòng kiểm tra quyền truy cập của liên kết."), { once: true });
+        frame.appendChild(image);
+        return;
+      }
+
+      showPlaceholder();
+    }
+
+    setupLinks(".js-download-link", SITE_CONFIG.downloadUrl, "#tai-ve", "Link tải Google Drive chưa được cập nhật.");
+    setupImages();
+
+    const guideVideo = document.querySelector("[data-guide-video]");
+    if (guideVideo && validLink(SITE_CONFIG.guideVideoUrl)) {
+      guideVideo.src = SITE_CONFIG.guideVideoUrl.trim();
+      guideVideo.addEventListener("error", () => {
+        const note = document.getElementById("video-note");
+        if (note) {
+          note.textContent = "Không phát được video trực tiếp. Vui lòng kiểm tra quyền truy cập công khai của tệp video trên Google Cloud Storage.";
+        }
+      }, { once: true });
+    }
+
+    document.querySelectorAll(".js-file-size").forEach(node => {
+      node.textContent = SITE_CONFIG.fileSize.trim() || "Sẽ cập nhật";
+    });
+    document.getElementById("md5-value").textContent = SITE_CONFIG.md5.trim() || "TỰ ĐIỀN SAU";
+    document.getElementById("sha256-value").textContent = SITE_CONFIG.sha256.trim() || "TỰ ĐIỀN SAU";
+    Object.entries(SITE_CONFIG.demos).forEach(([key, url]) => createDemo(key, url));
+
+    document.querySelectorAll("[data-copy]").forEach(button => {
+      button.addEventListener("click", async () => {
+        const value = document.getElementById(button.dataset.copy)?.textContent.trim() || "";
+        if (!value || value.includes("TỰ ĐIỀN")) {
+          showToast("Mã kiểm tra chưa được cập nhật.");
+          return;
+        }
+        try {
+          await navigator.clipboard.writeText(value);
+          showToast("Đã sao chép mã kiểm tra.");
+        } catch {
+          const range = document.createRange();
+          range.selectNode(document.getElementById(button.dataset.copy));
+          const selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(range);
+          showToast("Đã chọn mã. Nhấn Ctrl+C để sao chép.");
+        }
+      });
+    });
+
+    const menuButton = document.querySelector(".menu-button");
+    const nav = document.querySelector(".nav-links");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      document.body.classList.toggle("menu-open", isOpen);
+    });
+
+    nav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        document.body.classList.remove("menu-open");
+      });
+    });
+
+    const revealObserver = "IntersectionObserver" in window
+      ? new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: .1 })
+      : null;
+
+    document.querySelectorAll(".reveal").forEach(node => {
+      if (revealObserver) revealObserver.observe(node);
+      else node.classList.add("visible");
+    });
+
+    const navLinks = [...nav.querySelectorAll("a[href^='#']")];
+    const sections = navLinks
+      .map(link => document.querySelector(link.getAttribute("href")))
+      .filter(Boolean);
+
+    if ("IntersectionObserver" in window) {
+      const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const id = `#${entry.target.id}`;
+          navLinks.forEach(link => link.classList.toggle("active", link.getAttribute("href") === id));
+        });
+      }, { rootMargin: "-35% 0px -55%", threshold: 0 });
+      sections.forEach(section => sectionObserver.observe(section));
+    }
+
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
