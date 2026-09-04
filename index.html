@@ -1240,6 +1240,21 @@
       font-size: .82rem;
     }
 
+    .page-view-counter {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      color: #8ca8b8;
+      font-size: .82rem;
+    }
+
+    .page-view-counter strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
     .toast {
       position: fixed;
       right: 18px;
@@ -1480,7 +1495,7 @@
           <div class="hero-actions">
             <a class="button button-primary js-download-link" href="#tai-ve">
               <svg aria-hidden="true"><use href="#i-download"/></svg>
-              Tải bản dành cho Windows v10.8
+              Tải bản Windows v10.8
             </a>
             <a class="button button-dark-outline" href="#video-huong-dan">
               <svg aria-hidden="true"><use href="#i-book"/></svg>
@@ -2051,6 +2066,7 @@
             <li><a href="#tinh-nang">Tất cả tính năng</a></li>
             <li><a href="#tien-ich">Tiện ích nhỏ</a></li>
             <li><a href="#an-toan">An toàn dữ liệu</a></li>
+            <li><a href="https://code34vietnam.github.io/me/" target="_blank" rel="noopener noreferrer">Ghé thăm Code34</a></li>
           </ul>
         </div>
         <div>
@@ -2066,6 +2082,11 @@
       <div class="footer-bottom">
         <span>© <span id="current-year"></span> CODE34. All rights reserved.</span>
         <span>CODE34 Office Assistant · Phiên bản 10.8</span>
+      </div>
+
+      <div class="page-view-counter" aria-live="polite">
+        <span>Lượt xem trang:</span>
+        <strong id="page-view-count">Đang cập nhật…</strong>
       </div>
     </div>
   </footer>
@@ -2398,6 +2419,22 @@
     }
 
     document.getElementById("current-year").textContent = new Date().getFullYear();
+
+    const pageViewCount = document.getElementById("page-view-count");
+    fetch("https://counterapi.com/api/code34vietnam.github.io/view/xlvb?unique=true")
+      .then(response => {
+        if (!response.ok) throw new Error("Counter unavailable");
+        return response.json();
+      })
+      .then(data => {
+        const value = Number(data.value);
+        pageViewCount.textContent = Number.isFinite(value)
+          ? value.toLocaleString("vi-VN")
+          : "Đang cập nhật";
+      })
+      .catch(() => {
+        pageViewCount.textContent = "Đang cập nhật";
+      });
   </script>
 </body>
 </html>
