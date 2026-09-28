@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#123955">
-  <meta name="description" content="CODE34 Office Assistant – Trợ lý hành chính v10.11.3 với kéo thả Word/PDF, tìm kiếm và xử lý nhiều tệp, gộp dữ liệu theo thư mục, soát chính tả và giao diện linh hoạt trên Windows.">
+  <meta name="description" content="CODE34 Office Assistant v10.11.4: chuyển PDF nhiều trang ổn định hơn, kiểm tra chính tả nhanh hơn; cùng các cải tiến tìm kiếm và xử lý tài liệu trên Windows.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="vi_VN">
   <meta property="og:site_name" content="CODE34 Office Assistant">
@@ -698,6 +698,24 @@
       font-size: .9rem;
       font-weight: 600;
     }
+
+
+    .update-previous {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, .14);
+    }
+    .update-previous summary {
+      width: fit-content;
+      color: #aee8ff;
+      font-size: .9rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .update-previous summary:hover,
+    .update-previous summary:focus-visible { color: #fff; }
+    .update-previous .update-grid { margin-top: 16px; }
+    .update-current .update-item:last-child { grid-column: auto; }
 
     .benefit-grid {
       display: grid;
@@ -1616,7 +1634,7 @@
 
       <a class="nav-download js-download-link" href="#tai-ve">
         <svg aria-hidden="true"><use href="#i-download"/></svg>
-        Tải phiên bản v10.11.3
+        Tải phiên bản v10.11.4
       </a>
 
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Mở menu">
@@ -1647,7 +1665,7 @@
           <div class="hero-actions">
             <a class="button button-primary js-download-link" href="#tai-ve">
               <svg aria-hidden="true"><use href="#i-download"/></svg>
-              Tải phiên bản v10.11.3
+              Tải phiên bản v10.11.4
             </a>
             <a class="button button-dark-outline" href="#video-huong-dan">
               <svg aria-hidden="true"><use href="#i-book"/></svg>
@@ -1694,9 +1712,9 @@
           </span>
         </div>
         <div class="release-facts">
-          <span><b>Phiên bản</b><br>10.11.3</span>
+          <span><b>Phiên bản</b><br>10.11.4</span>
           <span><b>Nền tảng</b><br>Windows 10/11</span>
-          <span><b>Dung lượng</b><br><span class="js-file-size">442 MB</span></span>
+          <span><b>Dung lượng</b><br><span class="js-file-size">464,3 MB</span></span>
         </div>
         <a class="button button-pink js-download-link" href="#tai-ve">
           <svg aria-hidden="true"><use href="#i-download"/></svg>
@@ -1709,20 +1727,32 @@
       <div class="container">
         <div class="update-panel reveal">
           <div class="update-intro">
-            <p class="eyebrow">Bản cập nhật 10.11.3</p>
-            <h2 id="update-title">Ít thao tác hơn, xử lý cả nhóm tài liệu nhanh hơn</h2>
+            <p class="eyebrow">Bản cập nhật 10.11.4</p>
+            <h2 id="update-title">PDF nhiều trang ổn định, kiểm tra chính tả nhanh hơn</h2>
             <p>
-              Phiên bản mới tập trung vào những việc người dùng thường làm mỗi ngày:
-              mở tài liệu, tìm kiếm, gom dữ liệu, sắp xếp và kiểm tra văn bản.
+              Bản mới khắc phục hai điểm ảnh hưởng trực tiếp đến công việc hằng ngày.
+              Các cải tiến xử lý tài liệu của 10.11.3 vẫn được giữ lại.
             </p>
             <div class="update-badges" aria-label="Thông tin phiên bản">
               <span class="update-badge">Windows 10/11</span>
-              <span class="update-badge">442 MB</span>
+              <span class="update-badge">464,3 MB</span>
               <span class="update-badge pink">Bộ chạy ngoại tuyến</span>
             </div>
           </div>
 
           <div class="update-content">
+            <div class="update-grid update-current">
+              <article class="update-item">
+                <span class="update-icon">01</span>
+                <span><strong>Chuyển PDF nhiều trang ổn định hơn</strong><small>Đã sửa lỗi khi chuyển tài liệu PDF trên 50 trang.</small></span>
+              </article>
+              <article class="update-item">
+                <span class="update-icon">02</span>
+                <span><strong>Kiểm tra chính tả nhanh hơn</strong><small>Thao tác mượt hơn, giảm tình trạng giật, chậm khi rà lỗi.</small></span>
+              </article>
+            </div>
+            <details class="update-previous">
+              <summary>Xem các cải tiến từ 10.11.3</summary>
             <div class="update-grid">
               <article class="update-item">
                 <span class="update-icon">01</span>
@@ -1753,9 +1783,7 @@
                 <span><strong>Giao diện linh hoạt hơn</strong><small>Tự điều chỉnh cho màn hình rộng, hẹp và nhiều mức độ phân giải khác nhau.</small></span>
               </article>
             </div>
-            <p class="update-summary">
-              Phiên bản 10.11.3 giúp tìm kiếm, sắp xếp và xử lý tài liệu nhanh hơn, giảm bớt những thao tác thủ công trong công việc văn phòng.
-            </p>
+            </details>
           </div>
         </div>
       </div>
@@ -2147,15 +2175,15 @@
         <div class="download-panel reveal">
           <div class="download-copy">
             <p class="eyebrow">Bản phát hành hiện tại</p>
-            <h2>Tải CODE34 Office Assistant v10.11.3</h2>
+            <h2>Tải CODE34 Office Assistant v10.11.4</h2>
             <p class="lead">
               Bộ đầy đủ dành cho Windows, đóng gói để có thể sử dụng các thành phần cần thiết khi ngoại tuyến.
             </p>
 
             <div class="download-meta">
-              <div><small>Phiên bản</small><b>10.11.3</b></div>
+              <div><small>Phiên bản</small><b>10.11.4</b></div>
               <div><small>Nền tảng</small><b>Windows 10/11</b></div>
-              <div><small>Dung lượng</small><b class="js-file-size">442 MB</b></div>
+              <div><small>Dung lượng</small><b class="js-file-size">464,3 MB</b><small>464.297.662 byte</small></div>
             </div>
 
             <div class="setup-steps" id="huong-dan">
@@ -2182,19 +2210,19 @@
               <img data-image="appIconBackground" src="assets/code34-assistant-icon.png" alt="">
               <span>
                 <strong>Công cụ trợ lý hành chính</strong>
-                <small>Bộ ngoại tuyến · Windows</small>
+                <small>Code34_10_11_4_Portable_Signed.zip · Windows</small>
               </span>
             </div>
 
             <div class="hash-list">
               <div class="hash-row">
                 <label>MD5</label>
-                <span class="hash-value" id="md5-value">Chưa cập nhật</span>
+                <span class="hash-value" id="md5-value">2aab91af517ca6bb5c1db1c5011583d3</span>
                 <button class="copy-button" type="button" data-copy="md5-value">Sao chép</button>
               </div>
               <div class="hash-row">
                 <label>SHA-256</label>
-                <span class="hash-value" id="sha256-value">96541D8299D0A1A3F22508670DFB3411D244AD70B04E17773F5A2C571052AF6F</span>
+                <span class="hash-value" id="sha256-value">f082af5b115f751e7710bd92e3cb43f83b2dcf0dad7b00249aa3304fd142d02d</span>
                 <button class="copy-button" type="button" data-copy="sha256-value">Sao chép</button>
               </div>
             </div>
@@ -2289,7 +2317,7 @@
 
       <div class="footer-bottom">
         <span>© <span id="current-year"></span> CODE34. All rights reserved.</span>
-        <span>CODE34 Office Assistant · Phiên bản 10.11.3</span>
+        <span>CODE34 Office Assistant · Phiên bản 10.11.4</span>
       </div>
 
       <div class="page-view-counter" aria-live="polite">
@@ -2311,9 +2339,9 @@
        ============================================================ */
     const SITE_CONFIG = {
       downloadUrl: "https://drive.google.com/drive/folders/1Zbk7JNYkOAZd_X7bnu9b4u85VKDz6EYF?usp=sharing",
-      fileSize: "442 MB",
-      md5: "",
-      sha256: "96541D8299D0A1A3F22508670DFB3411D244AD70B04E17773F5A2C571052AF6F",
+      fileSize: "464,3 MB",
+      md5: "2aab91af517ca6bb5c1db1c5011583d3",
+      sha256: "f082af5b115f751e7710bd92e3cb43f83b2dcf0dad7b00249aa3304fd142d02d",
       guideVideoUrl: "https://storage.googleapis.com/menu-tamvy/CONG_CU_XLVB/xu%20ly%20du%20lieu.mp4",
 
       images: {
