@@ -182,6 +182,45 @@
       backdrop-filter: blur(14px);
     }
 
+    .product-announcement {
+      overflow: hidden;
+      color: #f7fbff;
+      background: linear-gradient(100deg, #0e344b, #113955 55%, #4b1e48);
+      border-bottom: 1px solid rgba(139, 223, 255, .26);
+    }
+    .product-announcement a {
+      display: block;
+      overflow: hidden;
+      padding: 12px 0;
+      color: inherit;
+      text-decoration: none;
+    }
+    .product-announcement a:focus-visible { outline: 3px solid #8bdfff; outline-offset: -3px; }
+    .product-announcement-track {
+      display: flex;
+      width: max-content;
+      animation: product-announcement-scroll 32s linear infinite;
+    }
+    .product-announcement a:hover .product-announcement-track,
+    .product-announcement a:focus-visible .product-announcement-track { animation-play-state: paused; }
+    .product-announcement-item {
+      flex: none;
+      padding-right: 84px;
+      white-space: nowrap;
+      font-size: .88rem;
+      font-weight: 600;
+      letter-spacing: .01em;
+    }
+    .product-announcement-item b { color: #8bdfff; }
+    @keyframes product-announcement-scroll {
+      to { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .product-announcement-track { animation: none; }
+      .product-announcement-item[aria-hidden] { display: none; }
+      .product-announcement a { overflow-x: auto; }
+    }
+
     .nav-wrap {
       display: flex;
       min-height: 72px;
@@ -1642,6 +1681,15 @@
       </button>
     </div>
   </header>
+
+  <div class="product-announcement">
+    <a href="trich-xuat/" aria-label="Khám phá Công cụ Thu thập và Trích xuất dữ liệu của CODE34">
+      <span class="product-announcement-track">
+        <span class="product-announcement-item"><b>CODE34 MỚI</b> &nbsp; Công cụ Thu thập &amp; Trích xuất dữ liệu · Tìm tệp, thu thập từ điện thoại, chụp cuộn và xuất báo cáo &nbsp; → Xem phần mềm</span>
+        <span class="product-announcement-item" aria-hidden="true"><b>CODE34 MỚI</b> &nbsp; Công cụ Thu thập &amp; Trích xuất dữ liệu · Tìm tệp, thu thập từ điện thoại, chụp cuộn và xuất báo cáo &nbsp; → Xem phần mềm</span>
+      </span>
+    </a>
+  </div>
 
   <main id="main-content">
     <section class="hero" id="top">
