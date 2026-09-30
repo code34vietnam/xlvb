@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071c2b">
+  <meta name="description" content="CODE34 – Công cụ Thu thập & Trích xuất dữ liệu: tìm kiếm, sắp xếp, sao chép dữ liệu điện tử và xuất báo cáo trên Windows.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:title" content="CODE34 · Thu thập & Trích xuất dữ liệu">
+  <meta property="og:description" content="Tìm đúng tệp, thu thập có chọn lọc, chụp nội dung dài và xuất báo cáo rõ nguồn dữ liệu.">
+  <meta property="og:image" content="https://storage.googleapis.com/menu-tamvy/code34/logo_trich_xuat.png">
+  <title>CODE34 · Thu thập & Trích xuất dữ liệu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { color-scheme: dark; --navy:#071c2b; --navy2:#123955; --cyan:#56d7f5; --pink:#ec5293; --text:#f5faff; --muted:#b9d0df; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--navy); color: var(--text); font-family: "Be Vietnam Pro", system-ui, sans-serif; line-height: 1.65; }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; border-radius: 4px; }
+    .container { width: min(1120px, calc(100% - 42px)); margin-inline: auto; }
+    .topbar { border-bottom: 1px solid #ffffff20; background: #071c2bf0; }
+    .topbar-inner { min-height: 68px; display:flex; align-items:center; justify-content:space-between; gap: 20px; }
+    .brand { text-decoration:none; font-weight:800; letter-spacing:.09em; font-size:1.12rem; }
+    .brand span { color:var(--cyan); }
+    .back { text-decoration:none; color:#cbe4f1; font-size:.85rem; font-weight:600; }
+    .back:hover { color:#fff; }
+    .hero { position:relative; overflow:hidden; padding: clamp(65px, 9vw, 116px) 0 82px; background: radial-gradient(ellipse at 77% 48%, #165377 0, transparent 41%), radial-gradient(ellipse at 96% 72%, #8f286146 0, transparent 34%), linear-gradient(145deg, #081d2c, #0c2a40); }
+    .hero::after { content:""; position:absolute; inset:auto 0 0; height:1px; background:linear-gradient(90deg,transparent,var(--cyan),var(--pink),transparent); opacity:.6; }
+    .hero-grid { position:relative; display:grid; grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr); align-items:center; gap:clamp(34px,6vw,86px); }
+    .eyebrow { margin:0 0 17px; color:#8ce5fc; font-size:.76rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+    h1 { margin:0; font-size:clamp(2.45rem,5vw,4.7rem); line-height:1.16; letter-spacing:-.045em; }
+    h1 span { color:var(--cyan); }
+    .lead { max-width:660px; margin:23px 0 30px; color:#d4e6ef; font-size:clamp(1rem,1.4vw,1.12rem); }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; }
+    .button { min-height:48px; display:inline-flex; align-items:center; justify-content:center; padding:12px 20px; border-radius:11px; font-size:.9rem; font-weight:800; text-align:center; text-decoration:none; transition:transform .2s,background .2s; }
+    .button:hover { transform:translateY(-2px); }
+    .primary { background:linear-gradient(105deg,#d92b78,#ef5795); color:#fff; box-shadow:0 13px 30px #d92b7840; }
+    .secondary { border:1px solid #7cbbd565; background:#ffffff0b; color:#f2f9fd; }
+    .icon-stage { position:relative; display:grid; min-height:330px; place-items:center; border:1px solid #8cdfff45; border-radius:30px; background:radial-gradient(circle at 48% 45%, #39bdea43, #13375136 52%, #0c263e9c 79%); box-shadow:0 30px 80px #020b1760, 0 0 85px #16a8df2c, inset 0 0 55px #2d97c127; }
+    .icon-stage::before { content:""; position:absolute; width:75%; aspect-ratio:1; border:1px solid #ffffff20; border-radius:50%; box-shadow:0 0 60px #ed4f9b2a; }
+    .icon-stage img { position:relative; width:min(72%,300px); max-height:290px; object-fit:contain; filter:drop-shadow(0 20px 30px #0008); }
+    main section:not(.hero) { padding:78px 0; }
+    h2 { margin:0 0 13px; font-size:clamp(1.7rem,3vw,2.55rem); line-height:1.28; letter-spacing:-.035em; }
+    .section-intro { max-width:650px; margin:0 0 28px; color:var(--muted); }
+    .features { background:#0b2639; }
+    .feature-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+    .feature { position:relative; padding:25px 27px 27px; background:linear-gradient(145deg,#173b53,#102d43); border:1px solid #9bdcff26; border-radius:17px; }
+    .feature::before { content:""; display:block; width:31px; height:3px; margin-bottom:20px; border-radius:3px; background:linear-gradient(90deg,var(--cyan),var(--pink)); }
+    .feature h3 { margin:0 0 8px; font-size:1.09rem; }
+    .feature p { margin:0; color:#bfd5e2; font-size:.92rem; }
+    .report-line { margin:20px 0 0; padding:17px 20px; border:1px solid #69cbe742; border-radius:12px; background:#57cffa0c; color:#dbeef5; font-size:.88rem; }
+    .guide { background:linear-gradient(150deg,#0b2538,#091d2c); }
+    .guide-layout { display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:clamp(30px,5vw,70px); }
+    .guide-head p:not(.eyebrow) { color:var(--muted); }
+    .steps { margin:0; padding:0; list-style:none; counter-reset:step; display:grid; gap:11px; }
+    .steps li { counter-increment:step; display:grid; grid-template-columns:37px 1fr; gap:16px; padding:17px 19px; background:#ffffff09; border:1px solid #ffffff1c; border-radius:13px; color:#d8e9f2; font-size:.89rem; }
+    .steps li::before { content:counter(step,decimal-leading-zero); color:var(--cyan); font-size:.85rem; font-weight:800; }
+    .steps b { color:#fff; }
+    code { color:#a9e8f8; font-size:.95em; }
+    .download { text-align:center; background:radial-gradient(ellipse at 50% 100%,#86275e30,transparent 58%); }
+    .download-inner { max-width:730px; margin:auto; }
+    .download-inner p { color:var(--muted); margin-bottom:25px; }
+    footer { padding:25px 0 32px; border-top:1px solid #ffffff20; color:#a9c3d3; font-size:.82rem; }
+    .footer-inner { display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; }
+    @media(max-width:760px) { .hero-grid,.guide-layout { grid-template-columns:1fr; } .hero { padding:60px 0; } .icon-stage { min-height:265px; max-width:450px; width:100%; margin:auto; } .feature-grid { grid-template-columns:1fr; } main section:not(.hero) { padding:60px 0; } }
+    @media(max-width:480px) { .container { width:min(100% - 28px,1120px); } h1 { font-size:2.35rem; } .actions .button { width:100%; } .topbar-inner { min-height:62px; } .steps li { padding:15px; } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .button { transition:none; } }
+  </style>
+</head>
+<body>
+  <header class="topbar"><div class="container topbar-inner">
+    <a class="brand" href="../" aria-label="Về trang CODE34 Office Assistant">CODE<span>34</span></a>
+    <a class="back" href="../">← Về Trợ lý hành chính</a>
+  </div></header>
+  <main>
+    <section class="hero" aria-labelledby="page-title"><div class="container hero-grid">
+      <div>
+        <p class="eyebrow">CODE34 · Công cụ dành cho Windows</p>
+        <h1 id="page-title">Thu thập &amp;<br><span>Trích xuất dữ liệu</span></h1>
+        <p class="lead">Tìm đúng tệp cần lấy, thu thập dữ liệu điện tử có chọn lọc và xuất báo cáo rõ ràng. Từ thư mục trên máy tính đến vùng tệp điện thoại mà Windows cho phép truy cập, mọi thao tác được gom trong một công cụ.</p>
+        <div class="actions">
+          <a class="button primary" href="https://drive.google.com/file/d/1qr7WaOOP4wyMaYMofjakVQl-h50opXCd/view?usp=sharing" target="_blank" rel="noopener noreferrer">Tải phần mềm ↗</a>
+          <a class="button secondary" href="#chuc-nang">Xem chức năng</a>
+        </div>
+      </div>
+      <div class="icon-stage"><img src="https://storage.googleapis.com/menu-tamvy/code34/logo_trich_xuat.png" alt="Biểu tượng Công cụ Thu thập và Trích xuất dữ liệu CODE34" width="320" height="320"></div>
+    </div></section>
+
+    <section class="features" id="chuc-nang" aria-labelledby="features-title"><div class="container">
+      <p class="eyebrow">Làm được gì?</p>
+      <h2 id="features-title">Từ tìm kiếm đến báo cáo</h2>
+      <p class="section-intro">Chọn nguồn dữ liệu, xem trước kết quả, rồi chỉ lấy những tệp cần thiết.</p>
+      <div class="feature-grid">
+        <article class="feature"><h3>Tìm kiếm tệp và nội dung</h3><p>Tìm theo tên hoặc quét nội dung Word, PDF, Excel, hình ảnh và văn bản. Có thể bật OCR cho tài liệu scan khi đã chuẩn bị thư viện cần thiết.</p></article>
+        <article class="feature"><h3>Sắp xếp dữ liệu trên máy tính</h3><p>Gom tệp theo loại như tài liệu, ảnh, video, âm thanh, gói nén; xem trước, lọc theo dung lượng, rồi chọn sao chép hoặc di chuyển.</p></article>
+        <article class="feature"><h3>Thu thập từ điện thoại</h3><p>Đọc danh sách tệp trong bộ nhớ điện thoại Windows truy cập được; lọc, chọn nhiều tệp, sao chép về máy tính hoặc sắp xếp theo nhóm.</p></article>
+        <article class="feature"><h3>Chụp nội dung dài</h3><p>Chọn vùng màn hình để chụp cuộn; hỗ trợ thao tác qua scrcpy trên Android và chụp tiếp sau khi vuốt tay trên iPhone. Có thể ghép ảnh dài.</p></article>
+      </div>
+      <p class="report-line"><b>Báo cáo đi cùng dữ liệu:</b> xuất Excel/CSV cho kết quả tìm kiếm; báo cáo Excel cho tệp đã sắp xếp hoặc thu thập, với tên tệp, dung lượng, MD5, đường dẫn và trạng thái xử lý. Thông tin thiết bị được ghi khi máy cung cấp.</p>
+    </div></section>
+
+    <section class="guide" id="android" aria-labelledby="guide-title"><div class="container guide-layout">
+      <div class="guide-head">
+        <p class="eyebrow">Hướng dẫn nhanh · Android</p>
+        <h2 id="guide-title">Chụp cuộn bằng scrcpy-win64-v3.3.4</h2>
+        <p>scrcpy hiển thị màn hình Android trên máy tính; CODE34 chụp vùng hiển thị đó và tự vuốt để ghi lại nội dung dài.</p>
+      </div>
+      <ol class="steps">
+        <li><span>Trên Android, bật <b>Gỡ lỗi USB</b> trong Tùy chọn nhà phát triển. Cắm cáp, mở khóa điện thoại và chọn <b>Cho phép gỡ lỗi USB</b> khi được hỏi.</span></li>
+        <li><span>Chạy <code>scrcpy.exe</code> trong bộ scrcpy-win64-v3.3.4. Đặt cửa sổ điện thoại cố định trên PC; đừng phóng to, thu nhỏ hoặc di chuyển trong lúc chụp.</span></li>
+        <li><span>Trong CODE34, chọn <b>Nơi lưu</b> và <b>Tên ảnh</b>. Bấm <b>Chọn vùng trên màn hình</b>, kéo chọn phần nội dung bên trong cửa sổ scrcpy, tránh viền và thông báo nổi.</span></li>
+        <li><span>Ở <b>Cách cuộn</b>, chọn <b>1. Vuốt màn hình (Scrcpy/Android)</b>. Chọn tự dừng khi ảnh không đổi hoặc đặt số lượt cố định; bấm <b>Bắt đầu chụp</b> rồi để yên chuột.</span></li>
+        <li><span>Khi hoàn tất, chọn có ghép ảnh dài hay không. Các ảnh lẻ luôn nằm trong thư mục đã chọn.</span></li>
+      </ol>
+    </div></section>
+
+    <section class="download" id="tai-ve" aria-labelledby="download-title"><div class="container download-inner">
+      <p class="eyebrow">Sẵn sàng sử dụng</p>
+      <h2 id="download-title">Tải Công cụ Thu thập &amp; Trích xuất dữ liệu</h2>
+      <p>Tải bộ phần mềm, giải nén đầy đủ rồi mở trên Windows. Phần chụp Android cần chạy scrcpy-win64-v3.3.4 riêng.</p>
+      <a class="button primary" href="https://drive.google.com/file/d/1qr7WaOOP4wyMaYMofjakVQl-h50opXCd/view?usp=sharing" target="_blank" rel="noopener noreferrer">Tải từ Google Drive ↗</a>
+    </div></section>
+  </main>
+  <footer><div class="container footer-inner"><span>© CODE34 · Thu thập &amp; Trích xuất dữ liệu</span><a href="../">Trợ lý hành chính</a></div></footer>
+</body>
+</html>
